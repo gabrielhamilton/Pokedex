@@ -4,27 +4,37 @@ import './App.css';
 const Pokecard = ({pokeClass, handleOnClick}) => {
   return <button onClick={() => 
   handleOnClick(pokeClass+1)} 
-  className="Pokecard">
+  className="card">
   <img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokeClass + 1}.png`} alt={pokeClass}></img>
   </button>
 }
 
 const Lista =({handleOnClick}) =>{
-  const cells = pokeClasses.map(pokeClass => {
-    return (
-      <Pokecard
-        key={pokeClass.id} 
-        pokeClass={pokeClass} 
-        handleOnClick={handleOnClick}
-      />
-    );
-  });
+  const [escolha, poke] = useState([])
+    useEffect(() =>{
+      const fetchData = async() =>{
+      const response = await fetch('https://pokeapi.co/api/v2/ability/?limit=50')
+      const data = await response.json()
+      const listapoke = data.results.slice(0, data.results.length).map(item => item).flat()
+      poke(listapoke)
+    }
+    fetchData()
+    },[])
 
-  return (
-    <section className="poke-list">
-      {Pokecard }
-    </section>
-  )
+    return(
+      <section className="listapoke">
+        {
+        escolha.map((pokeClass, id)=>{
+          return(
+            <Pokecard
+            key={id} 
+            pokeClass={id} 
+            handleOnClick={handleOnClick} 
+            />
+          )
+        })}
+      </section>
+    )
 }
 
 
@@ -33,18 +43,13 @@ class App extends Component {
   constructor() {
     super()
     this.state={}
-    this.handleOnClick = this.handleOnClick.bind(this);
   }
-
-  handleOnClick(id) {
-    console.log(id);
-  }
-
+  
   
   render() {
     return(
       <div className="App">
-
+        <Lista handleOnClick={this.handleOnClick} />
       </div>
     );
   }
