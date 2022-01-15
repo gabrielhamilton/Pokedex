@@ -1,5 +1,8 @@
 import React, { Component, useState, useEffect } from 'react' 
 import './App.css';
+import Pesquisar from './pages/pesquisar';
+
+
 
 const Pokecard = ({pokeClass, handleOnClick}) => {
   return <button onClick={() => 
@@ -13,7 +16,7 @@ const Lista =({handleOnClick}) =>{
   const [escolha, poke] = useState([])
     useEffect(() =>{
       const fetchData = async() =>{
-      const response = await fetch('https://pokeapi.co/api/v2/ability/?limit=50')
+      const response = await fetch('https://pokeapi.co/api/v2/ability/?limit=5')
       const data = await response.json()
       const listapoke = data.results.slice(0, data.results.length).map(item => item).flat()
       poke(listapoke)
@@ -49,7 +52,7 @@ class App extends Component {
   render() {
     return(
       <div className="App">
-        <Lista handleOnClick={this.handleOnClick} />
+        <Pesquisar/>
       </div>
     );
   }
