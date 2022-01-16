@@ -1,14 +1,12 @@
 .App{
   display: flow-root;
-  align-items: center;
   justify-content: center;
-  width: 800px;
-  height: 600px;
+  width: 750px;
+  height: 500px;
   padding-left: 10px;
   margin: 10px auto;
   background-color: #b8b8b8;
   border-radius: 0px;
-  box-shadow: 0 14px 45px rgba(0, 0, 0, 0.22), 0 18px 45px rgba(0, 0, 0, 0.22);
 }
 
 /*.Lista {

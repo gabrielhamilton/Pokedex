@@ -2,17 +2,15 @@ import React, { Component, useState, useEffect } from 'react'
 import './App.css';
 import Pesquisar from './pages/pesquisar';
 
-
-
-const Pokecard = ({pokeClass, handleOnClick}) => {
+/*const Pokecard = ({pokeClass, handleOnClick}) => {
   return <button onClick={() => 
   handleOnClick(pokeClass+1)} 
   className="card">
   <img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokeClass + 1}.png`} alt={pokeClass}></img>
   </button>
-}
+}*/
 
-const Lista =({handleOnClick}) =>{
+/*const Lista =({handleOnClick}) =>{
   const [escolha, poke] = useState([])
     useEffect(() =>{
       const fetchData = async() =>{
@@ -38,7 +36,7 @@ const Lista =({handleOnClick}) =>{
         })}
       </section>
     )
-}
+}*/
 
 
 class App extends Component { 
@@ -48,11 +46,10 @@ class App extends Component {
     this.state={}
   }
   
-  
   render() {
     return(
       <div className="App">
-        <Pesquisar/>
+          <Pesquisar/>
       </div>
     );
   }
